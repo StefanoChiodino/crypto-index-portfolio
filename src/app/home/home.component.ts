@@ -9,6 +9,8 @@ import { CryptoCurrencyData } from '../models/crypto-currency.data';
 })
 export class HomeComponent implements OnInit {
   data: Array<CryptoCurrencyData>;
+  amount: number;
+  count: number;
 
   constructor(private readonly marketDataService: MarketDataService) { }
 
@@ -16,5 +18,9 @@ export class HomeComponent implements OnInit {
     this.marketDataService
       .getMarketData(10, "EUR")
       .subscribe(data => this.data = data);
+  }
+
+  update() {
+
   }
 }

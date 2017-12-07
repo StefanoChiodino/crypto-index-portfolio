@@ -1,6 +1,8 @@
-<p>
-  home works!
-</p>
+<input (change)="update()" type="number" class="form-control" id="amount" required [(ngModel)]="amount" name="amount" placeholder="amount"
+/> {{ amount }}
+
+<input (change)="update()" type="number" step="1" class="form-control" id="count" required [(ngModel)]="count" name="count"
+  placeholder="Number of cryptocurrencies" /> {{ count }}
 
 <ul>
   <li *ngFor="let d of data">{{ d.name }}</li>
