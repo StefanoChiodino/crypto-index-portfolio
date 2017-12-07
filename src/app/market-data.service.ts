@@ -11,6 +11,6 @@ export class MarketDataService {
 
   getMarketData(count: number, currency: string): Observable<Array<CryptoCurrencyData>> {
     return this.httpClient
-      .get<Array<CryptoCurrencyData>>("https://api.coinmarketcap.com/v1/ticker/?convert=${currency}&limit=${count}");
+      .get<Array<CryptoCurrencyData>>('https://api.coinmarketcap.com/v1/ticker/?convert=${currency}&limit=${count}');
   }
 }

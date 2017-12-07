@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { MarketDataService } from '../market-data.service';
+import { CryptoCurrencyData } from '../models/crypto-currency.data';
 
 @Component({
   selector: 'app-home',
@@ -6,10 +8,13 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
+  data: Array<CryptoCurrencyData>;
 
-  constructor() { }
+  constructor(private readonly marketDataService: MarketDataService) { }
 
   ngOnInit() {
+    this.marketDataService
+      .getMarketData(10, "EUR")
+      .subscribe(data => this.data = data)
   }
-
 }
