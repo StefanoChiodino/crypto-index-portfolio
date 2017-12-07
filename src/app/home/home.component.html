@@ -1,9 +1,12 @@
 <input (change)="update()" type="number" class="form-control" id="amount" required [(ngModel)]="amount" name="amount" placeholder="amount"
-/> {{ amount }}
+  ng-disabled="loading" />
 
 <input (change)="update()" type="number" step="1" class="form-control" id="count" required [(ngModel)]="count" name="count"
-  placeholder="Number of cryptocurrencies" /> {{ count }}
+  placeholder="Number of cryptocurrencies" ng-disabled="loading" />
 
+<select (change)="update(); updateMarketData();" [(ngModel)]="currency">
+  <option *ngFor="let currency of currencies">{{ currency }}</option>
+</select>
 <ul>
   <li *ngFor="let p of portfolio">{{ p }}</li>
 </ul>

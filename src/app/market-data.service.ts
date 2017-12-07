@@ -9,8 +9,15 @@ export class MarketDataService {
 
   constructor(private readonly httpClient: HttpClient, private readonly supportedCurrencyService: SupportedCurrencyService) { }
 
-  getMarketData(count: number, currency: string): Observable<Array<CryptoCurrencyData>> {
+  getMarketData(currency?: string, count?: number): Observable<Array<CryptoCurrencyData>> {
+    let url = 'https://api.coinmarketcap.com/v1/ticker/?';
+    if (currency) {
+      url += `convert=${currency}`;
+    }
+    if (count) {
+      url += `&limit=${count}`;
+    }
     return this.httpClient
-      .get<Array<CryptoCurrencyData>>(`https://api.coinmarketcap.com/v1/ticker/?convert=${currency}&limit=${count}`);
+      .get<Array<CryptoCurrencyData>>(url);
   }
 }
