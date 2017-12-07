@@ -15,6 +15,6 @@ export class HomeComponent implements OnInit {
   ngOnInit() {
     this.marketDataService
       .getMarketData(10, "EUR")
-      .subscribe(data => this.data = data)
+      .subscribe(data => this.data = data);
   }
 }

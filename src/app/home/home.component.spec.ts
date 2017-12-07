@@ -1,6 +1,9 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { HomeComponent } from './home.component';
+import { MarketDataService } from '../market-data.service';
+import { SupportedCurrencyService } from '../supported-currency.service';
+import { HttpClient, HttpClientModule } from '@angular/common/http';
 
 describe('HomeComponent', () => {
   let component: HomeComponent;
@@ -8,9 +11,11 @@ describe('HomeComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ HomeComponent ]
+      declarations: [HomeComponent],
+      imports: [HttpClientModule],
+      providers: [MarketDataService, SupportedCurrencyService, HttpClient]
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {
