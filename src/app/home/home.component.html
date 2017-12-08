@@ -1,5 +1,5 @@
 <div class="container">
-  <h1 class="mat-display-1">Crypto Index DIY</h1>
+  <mat-toolbar>Crypto Index DIY</mat-toolbar>
   <mat-form-field>
     <input matInput (change)="update()" type="number" class="form-control" id="amount" required [(ngModel)]="amount" name="amount"
       placeholder="amount" ng-disabled="loading" />
@@ -25,16 +25,24 @@
     </mat-chip>
   </mat-chip-list>
 
-
-  <mat-grid-list cols="5" rowHeight="4:1">
-    <div *ngFor="let p of portfolio">
-      <mat-grid-tile>
-        {{ p.symbol }}
-        <mat-icon (click)="addExcludedCryptoCurrenciesSymol(p.symbol)">cancel</mat-icon>
-      </mat-grid-tile>
-      <mat-grid-tile colspan="4">
+  <div class="row">
+    <mat-card *ngFor="let p of portfolio" class="card">
+      <mat-card-header>
+        <div mat-card-avatar class="card-avatar" style="background-image: url('{{ p.image }}')" *ngIf="p.image"></div>
+        <mat-card-title-group>
+          <mat-card-title>{{ p.symbol }}</mat-card-title>
+          <mat-card-subtitle>{{ p.name }}</mat-card-subtitle>
+        </mat-card-title-group>
+        <mat-card-actions>
+          <mat-icon (click)="addExcludedCryptoCurrenciesSymol(p.symbol)">cancel</mat-icon>
+        </mat-card-actions>
+      </mat-card-header>
+      <mat-card-content>
+        ({{ p.portfolioValue | currency: currency }})
+      </mat-card-content>
+      <mat-card-footer>
         <mat-progress-bar mode="determinate" value="{{ p.portfolioValueRatio * 100 }}"></mat-progress-bar>
-      </mat-grid-tile>
-    </div>
-  </mat-grid-list>
+      </mat-card-footer>
+    </mat-card>
+  </div>
 </div>

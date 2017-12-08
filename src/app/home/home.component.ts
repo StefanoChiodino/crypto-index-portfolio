@@ -18,9 +18,7 @@ export class HomeComponent implements OnInit {
   currency: string;
   portfolio: Array<PortfolioCryptoCurrencyData>;
   loading = true;
-  excludedCryptoCurrencySymbols: Array<string> = ['eg'];
-
-  separatorKeysCodes = [ENTER, COMMA];
+  excludedCryptoCurrencySymbols: Array<string>;
 
   constructor(
     private readonly marketDataService: MarketDataService,
@@ -30,6 +28,7 @@ export class HomeComponent implements OnInit {
     this.loading = true;
     this.amount = 1000;
     this.count = 10;
+    this.excludedCryptoCurrencySymbols = new Array<string>();
     this.currencies = this.supportedCurrencyService
       .getSupportedCurrencies();
     this.currency = this.currencies[0];
