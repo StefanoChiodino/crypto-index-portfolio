@@ -33,6 +33,7 @@ import {
     MatGridListModule,
     MatToolbarModule,
     MatCardModule,
+    MatProgressSpinnerModule,
   ],
   providers: [
     MarketDataService,
