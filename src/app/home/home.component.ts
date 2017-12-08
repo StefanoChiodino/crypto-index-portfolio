@@ -65,9 +65,15 @@ export class HomeComponent implements OnInit {
           const portfolioCryptoCurrencyData = new PortfolioCryptoCurrencyData(c);
           portfolioCryptoCurrencyData.portfolioValue = portfolioValue;
           portfolioCryptoCurrencyData.portfolioValueRatio = portfolioValueRatio;
+          portfolioCryptoCurrencyData.portfolioAmount = portfolioValue / this.getPrice(c, this.currency);
           return portfolioCryptoCurrencyData;
         });
     }
+  }
+
+  getPrice(cryptoCurrencyData: CryptoCurrencyData, currency: string): number {
+    const marketCap = cryptoCurrencyData['price_' + currency.toLowerCase()];
+    return marketCap;
   }
 
   getMarketCap(cryptoCurrencyData: CryptoCurrencyData, currency: string): number {
