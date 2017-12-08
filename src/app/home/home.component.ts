@@ -54,17 +54,18 @@ export class HomeComponent implements OnInit {
       && this.count > 0
       && this.currency) {
       const currencies = this.cryptoCurrencyData
+        .filter(c => !this.excludedCryptoCurrencySymbols.includes(c.symbol))
         .slice(0, this.count);
       const currenciesCap = currencies
         .map(c => this.getMarketCap(c, this.currency))
         .reduce((accumulator, cap) => Number(accumulator) + Number(cap));
       this.portfolio = currencies
         .map(c => {
-          const portfolioValuePercent = this.getMarketCap(c, this.currency) / currenciesCap;
-          const portfolioValue = portfolioValuePercent * this.amount;
+          const portfolioValueRatio = this.getMarketCap(c, this.currency) / currenciesCap;
+          const portfolioValue = portfolioValueRatio * this.amount;
           const portfolioCryptoCurrencyData = new PortfolioCryptoCurrencyData(c);
           portfolioCryptoCurrencyData.portfolioValue = portfolioValue;
-          portfolioCryptoCurrencyData.portfolioValuePercent = portfolioValuePercent;
+          portfolioCryptoCurrencyData.portfolioValueRatio = portfolioValueRatio;
           return portfolioCryptoCurrencyData;
         });
     }
@@ -80,10 +81,14 @@ export class HomeComponent implements OnInit {
 
     if (index >= 0) {
       this.excludedCryptoCurrencySymbols.splice(index, 1);
+      this.update();
     }
   }
 
   addExcludedCryptoCurrenciesSymol(cryptoCurrencySymbol: string) {
-    this.excludedCryptoCurrencySymbols.push(cryptoCurrencySymbol);
+    if (!this.excludedCryptoCurrencySymbols.includes(cryptoCurrencySymbol)) {
+      this.excludedCryptoCurrencySymbols.push(cryptoCurrencySymbol);
+      this.update();
+    }
   }
 }

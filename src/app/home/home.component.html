@@ -21,17 +21,16 @@
   <mat-chip-list>
     <mat-chip *ngFor="let excludedCryptoCurrencySymbol of excludedCryptoCurrencySymbols">
       {{ excludedCryptoCurrencySymbol }}
-      <mat-icon matChipRemove>remove</mat-icon>
+      <mat-icon (click)="removeExcludedCryptoCurrenciesSymbol(excludedCryptoCurrencySymbol)">cancel</mat-icon>
     </mat-chip>
   </mat-chip-list>
-  <mat-icon>home</mat-icon>
 
   <mat-list>
     <mat-list-item *ngFor="let p of portfolio">
       {{ p.symbol }}
-      <mat-icon (click)="addExcludedCryptoCurrenciesSymol(p.symbol)">exclude</mat-icon>
+      <mat-icon (click)="addExcludedCryptoCurrenciesSymol(p.symbol)">cancel</mat-icon>
       <br />
-      <mat-progress-bar mode="determinate" value="{{ p.portfolioValuePercent * 100 }}"></mat-progress-bar>
+      <mat-progress-bar mode="determinate" value="{{ p.portfolioValueRatio * 100 }}"></mat-progress-bar>
     </mat-list-item>
   </mat-list>
 </div>
