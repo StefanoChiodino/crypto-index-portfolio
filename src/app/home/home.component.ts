@@ -18,7 +18,7 @@ export class HomeComponent implements OnInit {
   currency: string;
   portfolio: Array<PortfolioCryptoCurrencyData>;
   loading = true;
-  excludedCryptoCurrencySymbols = new Array<string>();
+  excludedCryptoCurrencySymbols: Array<string> = ['eg'];
 
   separatorKeysCodes = [ENTER, COMMA];
 
@@ -75,7 +75,7 @@ export class HomeComponent implements OnInit {
     return marketCap;
   }
 
-  removeExcludedCryptoCurrencySymbol(cryptoCurrencySymbol: string) {
+  removeExcludedCryptoCurrenciesSymbol(cryptoCurrencySymbol: string) {
     const index = this.excludedCryptoCurrencySymbols.indexOf(cryptoCurrencySymbol);
 
     if (index >= 0) {
@@ -84,10 +84,6 @@ export class HomeComponent implements OnInit {
   }
 
   addExcludedCryptoCurrenciesSymol(cryptoCurrencySymbol: string) {
-    const index = this.excludedCryptoCurrencySymbols.indexOf(cryptoCurrencySymbol);
-
-    if (index >= 0) {
-      this.excludedCryptoCurrencySymbols.splice(index, 1);
-    }
+    this.excludedCryptoCurrencySymbols.push(cryptoCurrencySymbol);
   }
 }

@@ -18,23 +18,18 @@
     </mat-select>
   </mat-form-field>
 
-  <mat-form-field>
-    <mat-chip-list #chipList>
-      <mat-chip *ngFor="let excludedCryptoCurrency of excludedCryptoCurrencies" [selectable]="false" [removable]="true" (remove)="removeExcludedCryptoCurrencySymbol(excludedCryptoCurrencies)">
-        {{ excludedCryptoCurrency }}
-        <mat-icon matChipRemove>cancel</mat-icon>
-      </mat-chip>
-    </mat-chip-list>
-  </mat-form-field>
-
   <mat-chip-list>
-    <mat-chip>Bitconnect</mat-chip>
+    <mat-chip *ngFor="let excludedCryptoCurrencySymbol of excludedCryptoCurrencySymbols">
+      {{ excludedCryptoCurrencySymbol }}
+      <mat-icon matChipRemove>remove</mat-icon>
+    </mat-chip>
   </mat-chip-list>
+  <mat-icon>home</mat-icon>
 
   <mat-list>
     <mat-list-item *ngFor="let p of portfolio">
       {{ p.symbol }}
-      <mat-icon (click)="addExcludedCryptoCurrenciesSymbol(p.symbol)">cancel</mat-icon>
+      <mat-icon (click)="addExcludedCryptoCurrenciesSymol(p.symbol)">exclude</mat-icon>
       <br />
       <mat-progress-bar mode="determinate" value="{{ p.portfolioValuePercent * 100 }}"></mat-progress-bar>
     </mat-list-item>
