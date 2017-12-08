@@ -10,7 +10,7 @@ import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { HttpHandler } from '@angular/common/http/src/backend';
 import { SupportedCurrencyService } from './supported-currency.service';
 import {
-  MatSelectModule, MatInputModule, MatFormFieldModule,
+  MatSelectModule, MatInputModule, MatFormFieldModule, MatListModule, MatProgressBarModule, MatChipsModule, MatIconModule,
 } from '@angular/material';
 
 @NgModule({
@@ -26,6 +26,10 @@ import {
     MatSelectModule,
     MatInputModule,
     MatFormFieldModule,
+    MatListModule,
+    MatProgressBarModule,
+    MatChipsModule,
+    MatIconModule,
   ],
   providers: [
     MarketDataService,

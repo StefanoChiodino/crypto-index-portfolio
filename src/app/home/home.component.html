@@ -1,5 +1,5 @@
 <div class="container">
-  <h1>Crypto Index DIY</h1>
+  <h1 class="mat-display-1">Crypto Index DIY</h1>
   <mat-form-field>
     <input matInput (change)="update()" type="number" class="form-control" id="amount" required [(ngModel)]="amount" name="amount"
       placeholder="amount" ng-disabled="loading" />
@@ -18,7 +18,25 @@
     </mat-select>
   </mat-form-field>
 
-  <ul>
-    <li *ngFor="let p of portfolio">{{ p }}</li>
-  </ul>
+  <mat-form-field>
+    <mat-chip-list #chipList>
+      <mat-chip *ngFor="let excludedCryptoCurrency of excludedCryptoCurrencies" [selectable]="false" [removable]="true" (remove)="removeExcludedCryptoCurrencySymbol(excludedCryptoCurrencies)">
+        {{ excludedCryptoCurrency }}
+        <mat-icon matChipRemove>cancel</mat-icon>
+      </mat-chip>
+    </mat-chip-list>
+  </mat-form-field>
+
+  <mat-chip-list>
+    <mat-chip>Bitconnect</mat-chip>
+  </mat-chip-list>
+
+  <mat-list>
+    <mat-list-item *ngFor="let p of portfolio">
+      {{ p.symbol }}
+      <mat-icon (click)="addExcludedCryptoCurrenciesSymbol(p.symbol)">cancel</mat-icon>
+      <br />
+      <mat-progress-bar mode="determinate" value="{{ p.portfolioValuePercent * 100 }}"></mat-progress-bar>
+    </mat-list-item>
+  </mat-list>
 </div>
