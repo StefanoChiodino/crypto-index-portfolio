@@ -53,13 +53,13 @@ export class HomeComponent implements OnInit {
     if (this.amount > 0
       && this.count > 0
       && this.currency) {
-      const currencies = this.cryptoCurrencyData
+      const cryptoCurrencies = this.cryptoCurrencyData
         .filter(c => !this.excludedCryptoCurrencySymbols.includes(c.symbol))
         .slice(0, this.count);
-      const currenciesCap = currencies
+      const currenciesCap = cryptoCurrencies
         .map(c => this.getMarketCap(c, this.currency))
         .reduce((accumulator, cap) => Number(accumulator) + Number(cap));
-      this.portfolio = currencies
+      this.portfolio = cryptoCurrencies
         .map(c => {
           const portfolioValueRatio = this.getMarketCap(c, this.currency) / currenciesCap;
           const portfolioValue = portfolioValueRatio * this.amount;
