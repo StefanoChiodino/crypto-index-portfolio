@@ -1,12 +1,24 @@
-<input (change)="update()" type="number" class="form-control" id="amount" required [(ngModel)]="amount" name="amount" placeholder="amount"
-  ng-disabled="loading" />
+<div class="container">
+  <h1>Crypto Index DIY</h1>
+  <mat-form-field>
+    <input matInput (change)="update()" type="number" class="form-control" id="amount" required [(ngModel)]="amount" name="amount"
+      placeholder="amount" ng-disabled="loading" />
+  </mat-form-field>
 
-<input (change)="update()" type="number" step="1" class="form-control" id="count" required [(ngModel)]="count" name="count"
-  placeholder="Number of cryptocurrencies" ng-disabled="loading" />
+  <mat-form-field>
+    <input matInput (change)="update()" type="number" step="1" class="form-control" id="count" required [(ngModel)]="count" name="count"
+      placeholder="Number of cryptocurrencies" ng-disabled="loading" />
+  </mat-form-field>
 
-<select (change)="update(); updateMarketData();" [(ngModel)]="currency">
-  <option *ngFor="let currency of currencies">{{ currency }}</option>
-</select>
-<ul>
-  <li *ngFor="let p of portfolio">{{ p }}</li>
-</ul>
+  <mat-form-field>
+    <mat-select (change)="update(); updateMarketData();" [(ngModel)]="currency">
+      <mat-option *ngFor="let currency of currencies">
+        {{ currency }}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <ul>
+    <li *ngFor="let p of portfolio">{{ p }}</li>
+  </ul>
+</div>
