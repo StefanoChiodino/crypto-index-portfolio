@@ -26,3 +26,7 @@ $app-theme: mat-dark-theme($app-primary, $app-accent, $app-warn);
 * {
     color: white;
 }
+
+.excluded-chip-list-wrapper .mat-form-field-infix {
+    width: auto !important;
+}
