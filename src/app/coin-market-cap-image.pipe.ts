@@ -7,7 +7,7 @@ import { CryptoCurrencyData } from './models/crypto-currency.data';
 export class CoinMarketCapImagePipe implements PipeTransform {
 
   transform(value: CryptoCurrencyData, size: number = 64): any {
-    const imageUrl = `https://files.coinmarketcap.com/static/img/coins/64x64/${value.name.toLowerCase().replace(' ', '-')}.png`;
+    const imageUrl = `https://files.coinmarketcap.com/static/img/coins/64x64/${value.id}.png`;
     return imageUrl;
   }
 }

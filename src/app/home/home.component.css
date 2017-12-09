@@ -31,3 +31,11 @@
 h1 {
     width: 100%;
 }
+
+.mat-card-avatar {
+    border-radius: 0px;
+}
+
+.mat-chip {
+    margin: 5px;
+}

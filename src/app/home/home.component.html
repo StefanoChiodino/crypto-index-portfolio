@@ -28,15 +28,17 @@
     <mat-spinner></mat-spinner>
   </div>
 
-  <div *ngIf="!loading">
-    <mat-chip-list>
-      <mat-chip *ngFor="let excludedCryptoCurrencySymbol of excludedCryptoCurrencySymbols">
-        {{ excludedCryptoCurrencySymbol }}
-        <mat-icon (click)="removeExcludedCryptoCurrenciesSymbol(excludedCryptoCurrencySymbol)" class="clickable">cancel</mat-icon>
-      </mat-chip>
-    </mat-chip-list>
 
-    <div class="row">
+  <div class="row">
+
+    <div *ngIf="!loading">
+      <mat-chip-list>
+        <mat-chip *ngFor="let excludedCryptoCurrencySymbol of excludedCryptoCurrencySymbols">
+          {{ excludedCryptoCurrencySymbol }}
+          <mat-icon (click)="removeExcludedCryptoCurrenciesSymbol(excludedCryptoCurrencySymbol)" class="clickable" color="warn">cancel</mat-icon>
+        </mat-chip>
+      </mat-chip-list>
+
       <mat-card *ngFor="let p of portfolio" class="card">
         <mat-card-header>
           <img mat-card-avatar class="card-avatar" src="{{ p | coinMarketCapImage }}" alt="" />
@@ -44,7 +46,7 @@
             <mat-card-title>{{ p.name }}</mat-card-title>
           </mat-card-title-group>
           <mat-card-actions>
-            <mat-icon (click)="addExcludedCryptoCurrenciesSymol(p.symbol)" class="clickable">cancel</mat-icon>
+            <mat-icon (click)="addExcludedCryptoCurrenciesSymol(p.symbol)" class="clickable" color="warn">cancel</mat-icon>
           </mat-card-actions>
         </mat-card-header>
         <mat-card-content>
