@@ -12,10 +12,10 @@ export class MarketDataService {
   getMarketData(currency?: string, count?: number): Observable<Array<CryptoCurrencyData>> {
     let url = 'https://api.coinmarketcap.com/v1/ticker/?';
     if (currency) {
-      url += `convert=${currency}`;
+      url += `convert=${currency}&`;
     }
     if (count) {
-      url += `&limit=${count}`;
+      url += `limit=${count}&`;
     }
     return this.httpClient
       .get<Array<CryptoCurrencyData>>(url);
