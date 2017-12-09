@@ -1,21 +1,27 @@
 <div class="container">
-  <mat-toolbar>Crypto Index DIY</mat-toolbar>
+  <mat-toolbar>
+    <h1>Crypto Index DIY</h1>
+  </mat-toolbar>
+
   <mat-form-field>
-    <input matInput (change)="update()" type="number" min="1" class="form-control" id="amount" required [(ngModel)]="amount"
+    <input matInput (keyup)="update()" (change)="update()" type="number" min="1" class="form-control" id="amount" required [(ngModel)]="amount"
       name="amount" placeholder="amount" ng-disabled="loading" />
+    <span matPrefix>💰</span>
   </mat-form-field>
 
   <mat-form-field>
-    <input matInput (change)="update()" type="number" step="1" min="1" class="form-control" id="count" required [(ngModel)]="count"
-      name="count" placeholder="Number of cryptocurrencies" ng-disabled="loading" />
+    <input matInput (keyup)="update()" (change)="update()" type="number" step="1" min="1" class="form-control" id="count" required
+      [(ngModel)]="count" name="count" placeholder="Number of cryptocurrencies" ng-disabled="loading" />
+    <span matPrefix>️️#️</span>
   </mat-form-field>
 
   <mat-form-field>
-    <mat-select (change)="updateMarketData()" [(ngModel)]="currency" placeholder="your currency">
+    <mat-select (change)="updateMarketData()" [(ngModel)]="currency" placeholder="your currency" required>
       <mat-option *ngFor="let currency of currencies" [value]="currency">
         {{ currency }}
       </mat-option>
     </mat-select>
+    <span matPrefix>💱</span>
   </mat-form-field>
 
   <div class="loading" *ngIf="loading">
