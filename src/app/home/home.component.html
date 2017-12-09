@@ -33,7 +33,7 @@
     <div class="row">
       <mat-card *ngFor="let p of portfolio" class="card">
         <mat-card-header>
-          <div mat-card-avatar class="card-avatar" style="background-image: url('{{ p.image }}')" *ngIf="p.image"></div>
+          <img mat-card-avatar class="card-avatar" src="{{ p | coinMarketCapImage }}" alt="" />
           <mat-card-title-group>
             <mat-card-title>{{ p.name }}</mat-card-title>
           </mat-card-title-group>

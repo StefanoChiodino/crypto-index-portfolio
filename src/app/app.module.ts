@@ -12,11 +12,13 @@ import { SupportedCurrencyService } from './supported-currency.service';
 import {
   MatSelectModule, MatInputModule, MatFormFieldModule, MatListModule, MatProgressBarModule, MatChipsModule, MatIconModule, MatGridListModule, MatToolbarModule, MatProgressSpinnerModule, MatCardModule,
 } from '@angular/material';
+import { CoinMarketCapImagePipe } from './coin-market-cap-image.pipe';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
+    CoinMarketCapImagePipe,
   ],
   imports: [
     BrowserModule,
