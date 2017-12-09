@@ -18,3 +18,7 @@
 .loading * {
     margin: auto;
 }
+
+.mat-icon.clickable {
+    cursor: pointer;
+}
