@@ -28,7 +28,7 @@ export class HomeComponent implements OnInit {
     this.loading = true;
     this.amount = 1000;
     this.count = 10;
-    this.excludedCryptoCurrencySymbols = new Array<string>();
+    this.excludedCryptoCurrencySymbols = ['BCC'];
     this.currencies = this.supportedCurrencyService
       .getSupportedCurrencies();
     this.currency = this.currencies[0];
